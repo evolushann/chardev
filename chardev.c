@@ -132,6 +132,7 @@ static ssize_t device_read(struct file *filp, /* see include/linux/fs.h   */
 static ssize_t
 device_write(struct file *filp, const char *buf, size_t len, loff_t *off)
 {
-  printk(KERN_ALERT "Sorry, this operation isn't supported.\n");
-  return -EINVAL;
+  sprintf(msg, "%s", buf);
+  printk(KERN_INFO "Received %ld characters from the user\n", len);
+  return len;
 }
